@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\usepackage[preprint]{./template/neurips_2020}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{amsmath}
+
+\title{Chapter 2: Introduction to Quantum Mechanics Examples}
+
+\author{
+  John Martinez \\
+  \texttt{john.r.martinez14@gmail.com} \\
+  % examples of more authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \AND
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%  The abstract paragraph should be indented \nicefrac{1}{2}~inch (3~picas) on
+%  both the left- and right-hand margins. Use 10~point type, with a vertical
+%  spacing (leading) of 11~points.  The word \textbf{Abstract} must be centered,
+%  bold, and in point size 12. Two line spaces precede the abstract. The abstract
+%  must be limited to one paragraph.
+%\end{abstract}
+\section{Intro to Quantum Mechanics}
+\subsection{Linear Dependence}
+Show that $(1, -1), (1, 2)$ and $(2, 1)$ are linearly dependent.
+
+\textbf{Solution}
+
+The solution to the linear system is $x = y = -z$.  So let
+$x = y = 2, z = -2$ then $ 2(1, -1) + 2(1, 2) - 2(2, 1) = (0, 0)\blacksquare$
+
+\subsection{Matrix Representations}
+Suppose $V$ is a vector space with basis vectors $\ket{0}$ and $\ket{1}$, and
+$A$ is a linear operator from $V$ to $V$ such that $A\ket{0} = \ket{1}$
+and $A\ket{1} = \ket{0}$. Give a matrix representation for $A$, with respect
+to the input basis $(\ket{0}, \ket{1})$ and the output basis
+$(\ket{0}, \ket{1})$.
+
+\textbf{Solution}
+
+$\sigma_{x} \equiv X \equiv \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}$ will
+flip a qubit in the standard basis. Let $\ket{0} =
+\begin{bmatrix}1 \\ 0\end{bmatrix}$ and let $\ket{1} = 
+\begin{bmatrix}0 \\ 1\end{bmatrix}$ then $X\ket{0} =
+\begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix}\begin{bmatrix} 1 \\ 0\end{bmatrix} = 
+\begin{bmatrix}0 \\ 1\end{bmatrix}$ and $X\ket{1} =
+\begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix}\begin{bmatrix} 0 \\ 1\end{bmatrix} =
+\begin{bmatrix}1 \\ 0\end{bmatrix}\blacksquare$
+
+\subsection{Matrix Representation for Operator Products}
+Suppose $A$ is a linear operator from vector space $V$ to vector space $W$,
+and $B$ is a linear operator from vector space $W$ to vector space $X$.
+Let $\ket{v_{i}}, \ket{w_{j}}$ and $\ket{x_{k}}$ be bases for the vector
+spaces $V$, $W$, and $X$, respectively. Show that the matrix
+representation for the linear transformation $BA$ is the matrix product
+of the matrix representation for $B$ and $A$, with respect to the appropriate
+bases.
+
+\textbf{Solution}
+$\blacksquare$
+
+
+\end{document}
+
