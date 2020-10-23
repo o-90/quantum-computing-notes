@@ -1,0 +1,396 @@
+\documentclass{article}
+
+\usepackage[preprint]{./template/neurips_2020}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{physics}
+\usepackage{amsmath}
+
+
+\title{Chapter 2: Introduction to Quantum Mechanics}
+
+\author{
+  John Martinez \\
+  \texttt{john.r.martinez14@gmail.com} \\
+  % examples of more authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \AND
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%  The abstract paragraph should be indented \nicefrac{1}{2}~inch (3~picas) on
+%  both the left- and right-hand margins. Use 10~point type, with a vertical
+%  spacing (leading) of 11~points.  The word \textbf{Abstract} must be centered,
+%  bold, and in point size 12. Two line spaces precede the abstract. The abstract
+%  must be limited to one paragraph.
+%\end{abstract}
+\section{Intro to Quantum Mechanics}
+\subsection{Linear Algebra}
+Vector space
+\begin{center}
+  $\begin{bmatrix}
+    z_{1} \\
+    \vdots \\
+    z_{n}
+  \end{bmatrix}$
+\end{center}
+
+%%% Section 1.1.1
+\subsubsection{Bases and Linear Independence}
+A \emph{spanning set} for a vector space is a set of vectors
+$\ket{v_{1}},...,\ket{v_{n}}$ such that any vector $\ket{v}$ in the vector
+space can be written as a linear combination
+$\ket{v} = \displaystyle\sum_{i}a_{i}\ket{v_{i}}$ in that set. The spanning
+set for the vector space $\mathbb{C}^{2}$ is the set
+  \begin{center}
+    $\ket{v_{1}} \equiv \begin{bmatrix} 1 \\ 0 \end{bmatrix};\mspace{10mu}
+    \ket{v_{2}} \equiv \begin{bmatrix} 0 \\ 1 \end{bmatrix}$
+  \end{center}
+
+A second spanning set in $\mathbb{C}^{2}$ is
+  \begin{center}
+    $
+    \ket{v_{1}} \equiv \frac{1}{\sqrt{2}}
+      \begin{bmatrix} 1 \\ 1
+      \end{bmatrix};\mspace{10mu}
+    \ket{v_{2}} \equiv \frac{1}{\sqrt{2}}
+      \begin{bmatrix} 1 \\ -1
+      \end{bmatrix}$
+  \end{center}
+
+A set set of non-zero vectors $\ket{v_{1}},...,\ket{v_{n}}$ are
+\emph{linear dependent} if there exists a set of complex numbers
+$a_{1},...,a_{n}$ with $a_{i} \neq 0$ for at least one value of $i$, such that
+\begin{center}
+  $a_{1}\ket{v_{1}} + a_{2}\ket{v_{2}} + \hdots + a_{n}\ket{v_{n}} = 0$.
+\end{center}
+
+%%% Section 1.1.2
+\subsubsection{Linear Operators and Matrices}
+A \emph{linear operator} between vector spaces $V$ and $W$ is defined to be any
+function $A : V \rightarrow W$ which is linear in its inputs
+  \begin{center}
+    $A\left(\displaystyle\sum_{i}a_{i}\ket{v_{i}}\right) =
+    \displaystyle\sum_{i}a_{i}A(\ket{v_{i}})$
+  \end{center}
+
+%%% Section 1.1.3
+\subsubsection{Pauli Matrices}
+  \begin{center}
+    $
+    \sigma_{0} \equiv I \equiv
+      \begin{bmatrix} 1 & 0 \\
+      0 & 1 \end{bmatrix};\mspace{10mu}
+    \sigma_{1} \equiv \sigma_{x} \equiv X \equiv
+      \begin{bmatrix} 0 & 1 \\
+      1 & 0 \end{bmatrix}
+    $
+  \end{center}
+
+  \begin{center}
+    $
+    \sigma_{2} \equiv \sigma_{y} \equiv Y \equiv
+      \begin{bmatrix} 0 & -i \\
+      i & 0 \end{bmatrix};\mspace{10mu}
+    \sigma_{3} \equiv \sigma_{z} \equiv Z \equiv
+      \begin{bmatrix} 1 & 0 \\
+      0 & -1 \end{bmatrix}
+    $
+  \end{center}
+
+%%% Section 1.1.4
+\subsubsection{Inner Products}
+An \emph{inner product} is a function which takes as input two vectors
+$\ket{v}$ and $\ket{w}$ form a vector space and produces a complex number
+as output.
+
+A function from $V \times V \rightarrow \mathbb{C}$ is an inner product if it
+satisfies the requiments that:
+
+(1) (., .) is linear in the second argument
+  \begin{center}
+    $
+      \left(\ket{v}, \displaystyle\sum_{i}\lambda_{i}\ket{w_{i}}\right) = 
+      \displaystyle\sum_{i}\lambda_{i}(\ket{v}, \ket{w_{i}})
+    $
+  \end{center}
+
+(2) $(\ket{v}, \ket{w}) = (\ket{w}, \ket{v})^{*}$
+
+(3) $(\ket{v}, \ket{v}) \geq 0$ with equality if and only if $\ket{v} = 0$
+
+For example, $\mathbb{C}^{n}$ has an inner product defined by
+  \begin{center}
+    $
+      ((y_{1},...,y_{n}),(z_{1},...,z_{n})) \equiv
+      \displaystyle\sum_{i}y_{i}^{*}z_{i} =
+      \begin{bmatrix}
+      y_{1}^{*} \hdots y_{n}^{*}
+      \end{bmatrix}
+      \begin{bmatrix}
+      z_{1} \\
+      \vdots \\
+      z_{n}
+      \end{bmatrix}
+    $
+  \end{center}
+
+Vectors $\ket{v}$ and $\ket{v}$ are \emph{orthogonal} if their inner product
+is zero. We define the \emph{norm} of a vector $\ket{v}$ by
+  \begin{center}
+    $\|\ket{v}\| \equiv \sqrt{\bra{v}\ket{v}}$
+  \end{center}
+
+A \emph{unit vector} is a vector $\ket{v}$ such that $\|\ket{v}\| = 1$.
+
+Suppose $\ket{w_{1}},\hdots,\ket{w_{d}}$ is a basis set for some vector space
+$V$ with an inner product. There is a useful method, the \emph{Gram-Schmidt}
+procedure, which can be used to produce an orthonormal basis set
+$\ket{v_{1}},\hdots,\ket{v_{d}}$ for a vector space $V$. Define
+$\ket{v_{1}} \equiv \frac{\ket{w_{1}}}{\|\ket{w_{1}}\|}$ and for
+$1 \leq k \leq d-1$ define $\ket{v_{k+1}}$ inductively by
+  \begin{center}
+  $
+    \ket{v_{k+1}} \equiv
+    \frac{\ket{w_{k+1}} - \sum_{i=1}^{k}\bra{v_{i}}\ket{w_{k+1}}\ket{v_{i}}}{
+    \|\ket{w_{k+1}} - \sum_{i=1}^{k}\bra{v_{i}}\ket{w_{k+1}}\ket{v_{i}}\|}
+  $
+  \end{center}
+
+%%% Section 1.1.5
+\subsubsection{Eigenvectors and Eigenvalues}
+An \emph{eigenvector} of a linear operator $A$ on a vector space is a non-zero
+vector $\ket{v}$ such that $A\ket{v} = v\ket{v}$, where $v \in \mathbb{C}$ and
+is known as the \emph{eigenvalue} of $A$ corresponding to $\ket{v}$. The
+\emph{characteristic function} is defined as
+$c(\lambda) \equiv det |A - \lambda I|$ where det is the \emph{determinant}
+function of matrices. The solutions to the characteristic equation,
+$c(\lambda) = 0$, are the eigenvalues of the operator $A$.
+
+A \emph{diagonal representation} for an operator $A$ on a vector space $V$ is
+a representation
+  \begin{center}
+    $A = \displaystyle\sum_{i}\lambda_{i}\ket{i}\bra{i}$
+  \end{center}
+where the vectors $\ket{i}$ form an orthonormal set of eigenvectors for $A$.
+A diagonal representation of Pauli $Z$ matrix:
+  \begin{center}
+    $Z = \begin{bmatrix} 1 & 0 \\ 0 & -1\end{bmatrix} =
+    \ket{0}\bra{0} - \ket{1}\bra{1}$
+  \end{center}
+
+%%% Section 1.1.6
+\subsubsection{Adjoints and Hermitian Operators}
+Suppose $A$ is any linear operator on a Hilbert space, $V$, then
+$\exists A^{\dagger}$ on $V$ such that $\forall \ket{v}, \ket{w} \in V$,
+  \begin{center}
+    $(\ket{v}, \ket{w}) = (A^{\dagger}\ket{v}, \ket{w})$.
+  \end{center}
+
+This linear operator is know ad the \emph{adjoint} or \emph{Hermitian conjugate}
+of the operator $A$.
+
+Note: $(AB)^{\dagger} = B^{\dagger}A^{\dagger}$
+
+($\dagger$) is called "dagger" and is equal to
+$A^{\dagger} \equiv (A^{*})^{T}$, which is the transpose of the complex
+conjugate. Example:
+  \begin{center}
+    $
+    \begin{bmatrix}
+      1 + 3i & 2i \\
+      1 + i & 1 - 4i
+    \end{bmatrix}^{\dagger} = 
+    \begin{bmatrix}
+      1 - 3i & 1 - i \\
+      -2i & 1 + 4i
+    \end{bmatrix}
+    $
+  \end{center}
+
+%%% Section 1.1.7
+\subsubsection{Tensor Products}
+The \emph{tensor product} if a way of putting vector spaces together to form
+larger vector spaces. Suppose $V$ and $W$ are vector spaces of dimensions $m$
+and $n$ respectively, then $V \otimes W$ is an $nm$ dimensional vector space.
+The elements of $V \otimes W$ are linear combinations of tensor products
+$\ket{v}\otimes\ket{w}$ of elements $\ket{v}$ of $V$ and $\ket{w}$ of $W$. A
+more intuitive way to represent this is through the \emph{Kronecker product}.
+Suppose A is an $m$ by $n$ matrix and B is a $p$ by $q$ matrix then:
+  \begin{center}
+  $ A \otimes B = 
+  \begin{bmatrix}
+    A_{11}B & A_{12}B & \cdots & A_{1n}B \\
+    A_{21}B & A_{22}B & \cdots & A_{2n}B \\
+    \vdots  & \vdots  & \ddots & \vdots  \\
+    A_{m1}B & A_{m2}B & \cdots & A_{mn}B
+  \end{bmatrix}$
+  \end{center}
+produces an $nq \cross mp$ matrix.
+
+Example:
+  \begin{center}
+    $
+    \begin{bmatrix}
+      1 \\ 2
+    \end{bmatrix} \otimes
+    \begin{bmatrix}
+      2 \\ 3
+    \end{bmatrix} = 
+    \begin{bmatrix}
+      2 \\ 3 \\ 4 \\ 6
+    \end{bmatrix}
+    $.
+  \end{center}
+
+%%% Section 1.1.8
+\subsubsection{Operator Functions}
+Let $A = \sum_{a}a\ket{a}\bra{a}$ be a spectral decomposition for a normal
+operator $A$. Define $f(A) \equiv \sum_{a}f(a)\ket{a}\bra{a}$.
+
+Example:
+  \begin{center}
+  $e^{\theta Z} =
+    \begin{bmatrix}
+      e^{\theta} & 0 \\
+      0 & e^{-\theta}
+    \end{bmatrix}$
+  \end{center}
+
+Since $Z$ has eigenvectors $\ket{0}$ and $\ket{1}$.
+
+The \emph{trace} of $A$ is defined to be the sum of its diagonal elements,
+  \begin{center}
+    $tr(A) \equiv \displaystyle\sum_{i} A_{ii}$.
+  \end{center}
+Some important properities:
+
+The trace is \emph{cyclic}: 
+  \begin{center}$tr(AB) = tr(BA)$\end{center}
+
+The trace is \emph{linear}:
+  \begin{center}$tr(A + B) = tr(A) + tr(B)$ and $tr(zA) = z tr(A)$\end{center}
+
+The trace is invariant under the \emph{unitary similarity transform}:
+  \begin{center}$A \rightarrow UAU^{\dagger}$\end{center}
+as
+  \begin{center}$tr(UAU^{\dagger}) = tr(U^{\dagger}UA) = tr(A)$\end{center}
+
+Suppose $\ket{\psi}$ is a unit vector and $A$ is an arbitrary operator. To
+evaluate $tr(A\ket{\psi}\bra{\psi})$ use the Gram-Schmidt procedure to extend
+$\ket{\psi}$ to an orthonormal basis $\ket{i}$ which includes $\ket{\psi}$ as
+the first element. Then we have
+
+  \begin{center}
+    $
+      tr(A\ket{\psi}\bra{\psi}) =
+      \displaystyle\sum_{i}\bra{i}A\ket{\psi}\bra{\psi}\ket{i}
+    $
+  \end{center}
+  \begin{center}
+    $
+      = \bra{\psi}A\ket{\psi}
+    $
+  \end{center}
+
+%%% Section 1.1.9
+\subsubsection{The Commutator and Anti-Commutator}
+The \emph{commutator} between two operators $A$ and $B$ is defined to be
+  \begin{center}
+    $[A, B] \equiv AB - BA$.
+  \end{center}
+
+If $[A, B] = 0$, that is, $AB = BA$, then we say that $A$ \emph{commutes} with 
+$B$.  The \emph{anti-commutator} is defined as:
+  \begin{center}
+    $\{A, B\} \equiv AB + BA$
+  \end{center}
+And we say $A$ \emph{anti-commutes} with $B$ if $\{A, B\} = 0$.
+
+%%% Section 1.1.10
+\subsubsection{Polar and Singular Value Decomposition}
+Let $A$ be a linear operator on a vector space $V$. $\exists$ a unitary $U$
+and positive operators $J$ and $K$ such that $A = UJ = KU$, defined by
+$J \equiv \sqrt{A^{\dagger}A}$ and $K \equiv \sqrt{AA^{\dagger}}$.
+
+Let $A$ be a square matrix. Then $\exists$ unitary matrics $U$ and $V$, and a
+diagonal matrix $D$ with non-negative entries such that $A = UDV$. The
+diagonal elements $D$ are called the \emph{singular values} of $A$.
+
+\subsection{Postulates of Quantum Mechanics}
+\subsubsection{State Space}
+\textbf{Postulate 1}: Assocaited to any isolated physical system is a complex
+vector space with inner product (that is, Hilbert space) know as the
+\emph{state space} of the system. The system is completely described by its
+\emph{state vector}, which is a unit vector in the system's state space.
+
+The simplest quantum mechanical system is the \emph{qubit}. An arbitrary
+vector in the state space can be written $\ket{\psi} = a\ket{0} + b\ket{1}$
+where $a, b \in \mathbb{C}$. The conditional that $\ket{\psi}$ be a unit
+vector, $\bra{\psi}\ket{\psi} = 1$, is equivalent to
+$|a|^{2} + |b|^{2} = 1$
+
+\subsubsection{Evolution}
+How does the state, $\ket{\psi}$, of a quantum mechanical system change with
+time?
+
+\textbf{Postulate 2.1}: The evolution of a \emph{closed} quantum system is
+described by a \emph{unitary transformation}. That is, the state
+$\ket{\psi}$ of the system at time $t_{1}$ is related to the state
+$\ket{\psi'}$ of the system at time $t_{2}$ by a unitary operator
+$U$ which depends only on the times $t_{1}$ and $t_{2}$:
+  \begin{center}
+    $\ket{\psi'} = U\ket{\psi}$.
+  \end{center}
+
+\textbf{Postulate 2.2}: The time evolution of the state of a closed quantum
+system is described by the \emph{Schrödinger equation}.
+
+  \begin{center}
+    $i\hbar\frac{\partial \ket{\psi}}{\partial t} = H\ket{\psi}$
+  \end{center}
+
+\subsubsection{Quantum Measurement}
+\textbf{Postulate 3}: Quantum measurements are describled by a collection
+${M_{m}}$ of \emph{measurement operators}.
+
+If the state of the quantum system is $\ket{\psi}$ immediately before the
+measurement then the probability that the result $m$ occurs is give by
+  \begin{center}
+    $p(m) = \bra{\psi}M_{m}^{\dagger}M_{m}\ket{\psi}$
+  \end{center}
+and the state after the measurement is
+  \begin{center}
+    $\frac{M_{m}\ket{\psi}}{\sqrt{\bra{\psi}M_{m}^{\dagger}M_{m}\ket{\psi}}}$
+  \end{center}
+
+\subsubsection{Distinguishing Quantum States}
+\end{document}

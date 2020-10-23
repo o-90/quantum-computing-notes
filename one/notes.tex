@@ -1,0 +1,271 @@
+\documentclass{article}
+
+\usepackage[preprint]{./template/neurips_2020}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{physics}
+\usepackage{amsmath}
+
+
+\title{Chapter 1: Introduction and Overview}
+
+\author{
+  John Martinez \\
+  \texttt{john.r.martinez14@gmail.com} \\
+  % examples of more authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \AND
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%  The abstract paragraph should be indented \nicefrac{1}{2}~inch (3~picas) on
+%  both the left- and right-hand margins. Use 10~point type, with a vertical
+%  spacing (leading) of 11~points.  The word \textbf{Abstract} must be centered,
+%  bold, and in point size 12. Two line spaces precede the abstract. The abstract
+%  must be limited to one paragraph.
+%\end{abstract}
+
+\section{Introduction}
+
+%%% Section 1.1
+\subsection{Global Perspective}
+n/a
+
+%%% Section 1.2
+\subsection{Quantum Bits}
+What is a qubit? Just as a classical bit has a \emph{state} - either $0$ or $1$
+- a qubit also has a state. Two possible states for a qubit are the states
+$\ket{0}$ and $\ket{1}$, which as you might guess corresponds to the states
+$0$ and $1$ for a classical bit. The difference between bits and qubits is
+that a qubit can be in a state \emph{other} than $\ket{0}$ or $\ket{1}$. It
+is also possible to form \emph{a linear combination} of states, often
+called \emph{superpositions}:
+
+\begin{center}
+  $\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$
+\end{center}
+
+Where $\alpha, \beta \in \mathbb{C}$.  Unfortunately, we cannot examine a qubit
+to determine its quantum state, that is, the values of $\alpha$ and
+$\beta$.  Instead, quantum mechanics tells us that we can only aquire
+much more restricted information about the quantum state. When we measure a
+qubit we get either the result $0$, with probability $\abs{\alpha}^{2}$, or the
+result $1$, with probability $\abs{\beta}^{2}$ with
+$\abs{\alpha}^{2} + \abs{\beta}^{2} = 1$, since probabilities must sum to $1$.
+
+This equation can also be represented as 
+
+\begin{center}
+  $\ket{\psi} = \cos(\frac{\theta}{2})\ket{0} + e^{i\phi}\sin(\frac{\theta}{2})\ket{1}$
+\end{center}
+
+%%% Section 1.2.1
+\subsubsection{Multiple Qubits}
+A two qubit system will have four \emph{computational basis states} denoted
+$\ket{00}, \ket{01}, \ket{10}, \ket{11}$. The state vector describing two qubits is
+
+\begin{center}
+  $\ket{\psi} = \alpha_{00}\ket{00} + \alpha_{01}\ket{01} + \alpha_{10}\ket{10} + \alpha_{11}\ket{11}$
+\end{center}
+And again, the probabilities must sum to one, satisfying the condition
+$\sum_{x \in \{0, 1\}^{2}}{\abs{\alpha_{x}^{2}} = 1}$, where the notation
+'$x \in \{0, 1\}^{2}$' means 'the set of strings of length two with each letter
+being either zero or one'.  Subsets of multi-qubit systems can be measured.
+Measuring the first qubit of the above two qubit system gives $0$ with
+probability $\abs{\alpha_{00}^{2}} + \abs{\alpha_{01}^{2}}$. The
+post-measurement state would then be
+
+\begin{center}
+    $\ket{\psi'} = \frac{\alpha_{00}\ket{00} + \alpha_{01}\ket{01} }{\sqrt{\abs{\alpha_{00}^{2}} + \abs{\alpha_{01}^{2}}}}$
+\end{center}
+
+An important two qubit state is the \emph{Bell state} or \emph{EPR pair}, 
+
+\begin{center}
+    $\frac{\ket{00} + \ket{11}}{\sqrt{2}}$
+\end{center}
+
+Bell states are important because their measurement outcomes are
+\emph{correlated}.
+
+%%% Section 1.3
+\subsection{Quantum Computation}
+
+%%% Section 1.3.1
+\subsubsection{Single Qubit Gates}
+The quantum $\mathbf{NOT}$ gate acts \emph{linearly}.
+\begin{center}
+  $\mathit{X} \equiv \begin{bmatrix}
+     1 & 0 \\
+     0 & 1
+   \end{bmatrix}$
+\end{center}
+If we write the quantum state $\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$ in
+vector notation
+\begin{center}
+    $\begin{bmatrix}
+       \alpha \\
+       \beta
+     \end{bmatrix}$
+\end{center}
+then the $\mathbf{NOT}$ gate operation can be represented as
+\begin{center}
+  $\mathit{X} \begin{bmatrix}
+     \alpha \\
+     \beta
+   \end{bmatrix} = \begin{bmatrix}
+     \beta \\
+     \alpha
+   \end{bmatrix}$
+\end{center}
+There is a restriction on the the type of matrix that can be a quantum gate and
+that is that the operation must preserve the normalization condition (i.e.
+$\abs{\alpha}^{2} + \abs{\beta}^{2} = 1$). The appropriate condition on the
+matrix representing the gate is that the matrix $\mathit{U}$ describing the
+single qubit gate must be \emph{unitary}, that is
+$\mathit{U}^{\dagger}\mathit{U} = \mathit{I}$ (where $\mathit{X}^{\dagger}$
+is the transpose of the complex conjugate of $\mathit{X}$).
+
+Other important single qubit quantum gates are the $\mathit{Z}$ gate
+\begin{center}
+  $\mathit{Z} \equiv \begin{bmatrix}
+    1 & 0 \\
+    0 & -1
+  \end{bmatrix}$
+\end{center}
+which leaves $\ket{0}$ unchanged and flips the sign of $\ket{1}$, and the
+\emph{Hadamard} gate
+\begin{center}
+  $\mathit{H} \equiv \frac{1}{\sqrt{2}}\begin{bmatrix}
+    1 & 1 \\
+    1 & -1
+  \end{bmatrix}$
+\end{center}
+The Hadamard operation is just a rotation of the sphere about the $\hat{y}$
+axis by $90^{\circ}$, followed by a rotation about the $\hat{x}$ axis by
+$180^{\circ}$.
+
+%%% Section 1.3.2
+\subsubsection{Multiple Qubit Gates}
+The prototypical multi-qubit logic gate is the \emph{controlled}-$\mathbf{NOT}$
+or $\mathbf{CNOT}$ gate.
+
+\begin{center}
+  $ \mathit{U_{\mathit{CN}}} \equiv \begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0
+  \end{bmatrix}$
+\end{center}
+The gate has two inputs, a \emph{control} qubit and a \emph{target} qubit. If
+the control qubit is set to $0$, then the target qubit is left alone. If the
+control qubit is set to $1$, then the target qubit is flipped.
+
+\begin{center}
+  $\ket{00} \to \ket{00}$;
+  $\ket{01} \to \ket{01}$;
+  $\ket{10} \to \ket{11}$;
+  $\ket{11} \to \ket{10}$;
+\end{center}
+
+%%% Section 1.3.3
+\subsubsection{Measurement in non-standard basis}
+The states $\ket{0}$ represent just one of many possible choices of basis
+states for a qubit. Another possible choice is
+
+\begin{center}
+  $\ket{+} \equiv \frac{(\ket{0} + \ket{1})}{\sqrt{2}} $ and
+  $\ket{-} \equiv \frac{(\ket{0} - \ket{1})}{\sqrt{2}} $
+\end{center}
+
+%%% Section 1.3.4
+\subsubsection{Quantum Circuits?}
+%%% Need to learn how to draw circuits in LaTex
+
+%%% Section 1.3.5
+\subsubsection{Copying Circuit?}
+
+%%% Section 1.3.6
+\subsubsection{Example: Bell States}
+
+\begin{center}
+  $\ket{\beta_{00}} = \frac{\ket{00} + \ket{11}}{\sqrt 2}$;
+
+  $\ket{\beta_{01}} = \frac{\ket{01} + \ket{10}}{\sqrt 2}$;
+
+  $\ket{\beta_{10}} = \frac{\ket{00} - \ket{11}}{\sqrt 2}$;
+
+  $\ket{\beta_{11}} = \frac{\ket{01} - \ket{10}}{\sqrt 2}$;
+\end{center}
+These are known as the \emph{Bell states}, or \emph{EPR states or pairs}.
+
+%%% Section 1.4
+\subsection{Quantum Algorithms}
+
+%%% Section 1.4.1
+\subsubsection{Classical Computations on a Quantum Computer?}
+
+%%% Section 1.4.2
+\subsubsection{Quantum Parallelism}
+Suppose $f(x) : \{0, 1\} \to \{0, 1\}$ is a function with a one-bit domain
+and range. A convenient way of computing this function on a quantum computer is
+to consider a two qubit quantum computer which starts in the state $\ket{x, y}$.
+It is possible with a sequence of gates to turn this into the state
+$U_f : \ket{x, y} \to \ket{x, y \oplus f(x)}$.  In particular, if we apply
+the Hadamard gate to
+$\mathit{H} \ket{0}$ we obtain $\frac{\ket{0} + \ket{1}}{\sqrt 2}$. Now
+applying
+$U_f$ we get $\frac{\ket{y, y \oplus f(0)} + \ket{y, y \oplus f(1)}}{\sqrt 2}$.
+And now letting $y = \ket{0}$, we get
+$\frac{\ket{0, f(0)} + \ket{0, f(1)}}{\sqrt 2}$.  This is a remarkable state,
+in that we have information about $f(0)$ and $f(1)$ simultaneously!
+
+This procedure can me generalized to functions on an arbitrary number of bits,
+by using the \emph{Walsh-Hadamard transform}. For $n = 2$ qubits we get
+
+\begin{center}
+  $\frac{\ket{0} + \ket{1}}{\sqrt 2}\frac{\ket{0} + \ket{1}}{\sqrt 2} = 
+   \frac{\ket{00} + \ket{01} + \ket{10} + \ket{11}}{2}$
+\end{center}
+We can write $\mathit{H}^{\otimes 2}$ to denote the parallel action of two
+Hadamard gates. More generally, the result of performing the Walsh-Hadamard
+transform on $n$ qubits initially in the $\ket{0}$ state is
+
+\begin{center}
+  $\frac{1}{\sqrt{2^{n}}}\displaystyle\sum_{x} \ket{x}$
+\end{center}
+And we write $\mathit{H}^{\otimes n}$ to denote this operation.
+
+% \begin{center}
+% \end{center}
+
+\end{document}

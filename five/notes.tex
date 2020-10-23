@@ -1,0 +1,58 @@
+\documentclass{article}
+
+\usepackage[preprint]{./template/neurips_2020}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{quantikz}
+
+\title{Chapter 5: The Quantum Fourier Transform and its Applications}
+
+\author{
+  John Martinez \\
+  \texttt{john.r.martinez14@gmail.com} \\
+}
+
+\begin{document}
+\maketitle
+
+\section{The Quantum Fourier Transform and its Applications}
+
+%%% Section 5.1
+\subsection{The Quantum Fourier Transform}
+The \emph{discrete fourier transform} takes as input a vector of complex numbers
+$x_0,\dots,X_{N-1}$ where the length $N$ of the vector is a fixed parameter. It
+outputs the transformed data, a vector of complex numbers $y_{0},\dots,y_{N-1}$,
+defined by
+\begin{center}
+  $y_{N} \equiv \frac{1}{\sqrt{N}}\displaystyle\sum_{j=0}^{N-1} x_{j}e^{2\pi i j k/N}$.
+\end{center}
+
+The \emph{quantum fourier transform} is exactly the same transformation,
+although the conventional notation for the quantum fourier transform is
+somewhat different. The quantum fourier transform on an orthonormal basis
+$\ket{0},\dots,\ket{N-1}$ is defined to be linear operator with the followin
+action on the basis states:
+\begin{center}
+  $\ket{j} \rightarrow
+  \frac{1}{\sqrt{N}}\displaystyle\sum_{k=0}^{N-1}e^{2\pi i j k /N}\ket{k}$.
+\end{center}
+
+The action on an arbitrary state maybe written
+\begin{center}
+  $\displaystyle\sum_{j=0}^{N-1}x_j\ket{j} \rightarrow
+  \displaystyle\sum_{k=0}^{N-1}y_k\ket{k}$.
+\end{center}
+
+It is not ovbious, but this transformation is a unitary transformation.
+\end{document}
